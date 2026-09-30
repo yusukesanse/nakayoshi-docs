@@ -1,0 +1,20 @@
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+
+  // Jekyll（kramdown + rouge）は ```mermaid を <pre><code class="language-mermaid"> にするが、
+  // 色付けが効いた場合は <div class="language-mermaid highlighter-rouge"> で包まれる。どちらでも図にする。
+  const toMermaid = (outer, text) => {
+    const pre = document.createElement("pre");
+    pre.className = "mermaid";
+    pre.textContent = text;
+    outer.replaceWith(pre);
+  };
+  document.querySelectorAll("div.language-mermaid").forEach((div) => toMermaid(div, div.textContent));
+  document.querySelectorAll("code.language-mermaid").forEach((code) => toMermaid(code.closest("pre") ?? code, code.textContent));
+
+  mermaid.initialize({ startOnLoad: false, securityLevel: "strict" });
+  await mermaid.run({ querySelector: "pre.mermaid" });
+</script>
+<style>
+  body { background-color: #ffffff; }
+</style>
