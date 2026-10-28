@@ -77,9 +77,31 @@ DNS の設定画面に、次の2行を足してください（2026-10-28 に、�
 - TXT は、持ち主の確認が終わったら消してかまいません。残しておいても害はありません。
 - いまは `nakayoshi-g.jp` の下のどの名前も HP のサーバーに向く設定（ワイルドカード）になっています。`app` の1行を足すと、`app` だけがミニアプリに向きます。HP（`brand.nakayoshi-g.jp`）や会社のメールには影響しません。
 
-### ② メールの送信元の証明の設定値（これから）
+### ② メールの送信元の証明の設定値
 
-メール送信サービスの契約名義が決まり、ドメインを登録したあとに、数行の値（TXT・MX）をお伝えします。
+DNS の設定画面に、次の3行を足してください（2026-10-28 に、メール送信サービスの設定画面で出した値です）。
+
+| 種別 | ホスト名 | 内容（値） | 何のため |
+|---|---|---|---|
+| TXT | `resend._domainkey` | 下の「DKIM の値」 | 送ったメールが本物だと証明する（DKIM） |
+| CNAME | `rsend` | `rsend-apne1.forge.rmta.net` | 送信元の証明（SPF） |
+| CNAME | `send` | `send.forge.rmta.net` | 送信元の証明（SPF） |
+
+DKIM の値（1行で、そのまま貼り付けてください）
+
+```
+p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC1JPlvNfkj+rrOzC3p99BY9aYvi3LEwrbjUWMGuRENzAFtaPtxtGmSjk6ReKaw4FET76QAZnzqIHkbfR6F17hXimqxEECT1tzKAZVMZjogyKYWhsTuAddLdSrCE9FmLXFCxt6V9H7hTF8HAXvsR7zI8E4OYbj1wsIbaIuGIn8k5QIDAQAB
+```
+
+あると望ましい1行（任意）
+
+| 種別 | ホスト名 | 内容（値） | 何のため |
+|---|---|---|---|
+| TXT | `_dmarc` | `v=DMARC1; p=none;` | なりすましメールの扱いを受け取る側に伝える（DMARC）。いまは設定がありません |
+
+- TTL は初期値のままで大丈夫です。
+- どれも `nakayoshi-g.jp` の下の新しい名前に足すもので、いまの会社のメール（`@nakayoshi-g.jp` の送受信）の設定は変えません。
+- 設定画面によっては、ホスト名に `.nakayoshi-g.jp` まで含めて入れる形式のものがあります（例：`resend._domainkey.nakayoshi-g.jp`）。
 
 聞くこと
 
