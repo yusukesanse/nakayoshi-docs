@@ -27,6 +27,7 @@ NAKAYOSHI グループの運営管理システムについて、本部の関係�
 5. [非機能要件](05-non-functional.html)
 6. [技術スタック](06-tech-stack.html)
 7. [付録：未決事項の一覧・用語集](appendix.html)
+8. [機能一覧（やりたいことと機能）](08-feature-list.html)
 
 専門用語は初めて出る場所で説明し、巻末の[用語集](appendix.html#用語集)にもまとめています。
 
