@@ -30,6 +30,7 @@ NAKAYOSHI グループの運営管理システムについて、本部の関係�
 8. [機能一覧（やりたいことと機能）](08-feature-list.html)
 9. [10/29 聞くこと](09-questions-1029.html)
 10. [先方にお願いすること](10-client-tasks.html)
+11. [Vercel のアカウントの作り方](11-vercel-setup.html)
 
 専門用語は初めて出る場所で説明し、巻末の[用語集](appendix.html#用語集)にもまとめています。
 
